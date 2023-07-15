@@ -25,7 +25,7 @@ export default class NotesView {
         </div>
         <div id="app">
             <input type="text"  class="app_title" placeholder="new note ..."/>
-            <textarea class="app_body" placeholder="body of app ...">Take Note ...</textarea>
+            <textarea class="app_body" placeholder="Take Some Notes"></textarea>
         </div>`
 
     const addNoteBtn = this.root.querySelector('.add-note')
@@ -61,6 +61,7 @@ export default class NotesView {
     )
     // body length
     const MAX_BODY_LENGTH = 50
+    
     return `
         <li class="note" data-note-id='${id}'>
                     <div class="note_title">

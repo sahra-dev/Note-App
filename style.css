@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('./assets/fonts/BalooBhaijaan2-Regular.woff') format('woff');
+  }
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +10,7 @@
 html{
     font-size: 62.5%;
     overflow-x: hidden;
-    font-family: cursive;
+    font-family: cursive , 'Baloo';
 }
 :root{
     --primary-color :  rgb(124,13,118);
@@ -129,7 +133,7 @@ html{
     padding: 1rem;
     margin: 0.5rem;
     text-transform: capitalize;
-    font-family: cursive ;
+    font-family: cursive , 'Baloo' ;
     border: 1px solid var(--primary-color) ;
     border-radius: 1rem;
     font-size: 1.5rem;
