@@ -1,7 +1,13 @@
 export default class NotesView {
   constructor(root, handlers) {
     this.root = root
-    const { onNoteAdd, onNoteEdit, onNoteSelect, onNoteDelete , onNoteDeleteAll } = handlers
+    const {
+      onNoteAdd,
+      onNoteEdit,
+      onNoteSelect,
+      onNoteDelete,
+      onNoteDeleteAll,
+    } = handlers
 
     this.onNoteAdd = onNoteAdd
     this.onNoteEdit = onNoteEdit
@@ -33,14 +39,13 @@ export default class NotesView {
     const inputTitle = this.root.querySelector('.app_title')
     const inputBody = this.root.querySelector('.app_body')
 
-
     addNoteBtn.addEventListener('click', () => {
       this.onNoteAdd()
-    });
-    deleteAllNotes.addEventListener('click', ()=>{
+    })
+    deleteAllNotes.addEventListener('click', () => {
       this.onNoteDeleteAll()
-    });
-    [inputTitle, inputBody].forEach((inputField) => {
+    })
+    ;[inputTitle, inputBody].forEach((inputField) => {
       inputField.addEventListener('blur', () => {
         const newBody = inputBody.value.trim()
         const newTitle = inputTitle.value.trim()
@@ -61,17 +66,18 @@ export default class NotesView {
     )
     // body length
     const MAX_BODY_LENGTH = 50
-    
+
     return `
         <li class="note" data-note-id='${id}'>
                     <div class="note_title">
-                        <span>${title}</span>
+                        <span>${title ? title : 'New Note'}</span>
                         <span class="icon" data-note-id='${id}'>
                             <img src="./assets/icons/icons-trash.png" class="icon-img" />
                         </span>
                     </div>
                     <div class="note_body">
-                    ${body.substring(0, MAX_BODY_LENGTH)}
+                    ${body ? body.substring(0, MAX_BODY_LENGTH)
+                        : 'Please write body section ...'}
                     ${body.length > MAX_BODY_LENGTH ? '...' : ''}
                     </div>
                     <div class="note_date">${persianDate} , ${persianTime}  </div>
@@ -104,14 +110,16 @@ export default class NotesView {
   updateActiveNote(note) {
     this.root.querySelector('.app_title').value = note.title
     this.root.querySelector('.app_body').value = note.body
-    this.root.querySelectorAll('.note').forEach( note =>{
+    this.root.querySelectorAll('.note').forEach((note) => {
       note.classList.remove('selected')
     })
     this.root
       .querySelector(`.note[data-note-id="${note.id}"]`)
-      .classList.add('selected');
+      .classList.add('selected')
   }
-  updateNotePreviewVisibility(visible){
-    this.root.querySelector('#app').style.visibility = visible ? 'visible' : 'hidden'
+  updateNotePreviewVisibility(visible) {
+    this.root.querySelector('#app').style.visibility = visible
+      ? 'visible'
+      : 'hidden'
   }
 }
