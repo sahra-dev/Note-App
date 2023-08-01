@@ -16,23 +16,23 @@ export default class NotesView {
     this.onNoteDeleteAll = onNoteDeleteAll
 
     this.root.innerHTML = `
-        <div class="sidebar">
-            <div class="sidebar_title">
-                note app
-            </div>
-            <ul class="notes"></ul>
-            <div class="sidebar_btns">
-            <button class="add-note btn"> add note </button>
-                <button class="delete-all-notes btn">
-                    delete all 
-                        <img src="./assets/icons/icons-trash.png" class="icon-img" />
-                    </button>
-            </div>
+      <div class="sidebar">
+        <div class="sidebar_title">
+          note app
         </div>
-        <div id="app">
-            <input type="text"  class="app_title" placeholder="new note ..."/>
-            <textarea class="app_body" placeholder="Take Some Notes"></textarea>
-        </div>`
+        <ul class="notes"></ul>
+        <div class="sidebar_btns">
+          <button class="add-note btn"> add note </button>
+          <button class="delete-all-notes btn">
+            delete all 
+            <img src="./assets/icons/icons-trash.png" class="icon-img" />
+          </button>
+        </div>
+      </div>
+      <div id="app">
+        <input type="text"  class="app_title" placeholder="new note ..."/>
+        <textarea class="app_body" placeholder="Take Some Notes"></textarea>
+      </div>`
 
     const addNoteBtn = this.root.querySelector('.add-note')
     const deleteAllNotes = this.root.querySelector('.delete-all-notes')
@@ -68,20 +68,20 @@ export default class NotesView {
     const MAX_BODY_LENGTH = 50
 
     return `
-        <li class="note" data-note-id='${id}'>
-                    <div class="note_title">
-                        <span>${title ? title : 'New Note'}</span>
-                        <span class="icon" data-note-id='${id}'>
-                            <img src="./assets/icons/icons-trash.png" class="icon-img" />
-                        </span>
-                    </div>
-                    <div class="note_body">
-                    ${body ? body.substring(0, MAX_BODY_LENGTH)
-                        : 'Please write body section ...'}
-                    ${body.length > MAX_BODY_LENGTH ? '...' : ''}
-                    </div>
-                    <div class="note_date">${persianDate} , ${persianTime}  </div>
-                </li>`
+      <li class="note" data-note-id='${id}'>
+        <div class="note_title">
+          <span>${title ? title : 'New Note'}</span>
+          <span class="icon" data-note-id='${id}'>
+            <img src="./assets/icons/icons-trash.png" class="icon-img" />
+          </span>
+        </div>
+      <div class="note_body">
+        ${ body? body.substring(0, MAX_BODY_LENGTH)
+          : 'Please write body section ...'}
+        ${body.length > MAX_BODY_LENGTH ? '...' : ''}
+      </div>
+      <div class="note_date">${persianDate} , ${persianTime}  </div>
+    </li>`
   }
 
   updateNoteList(notes) {
